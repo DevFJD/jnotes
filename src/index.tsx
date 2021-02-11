@@ -1,8 +1,10 @@
+import 'bulmaswatch/superhero/bulmaswatch.min.css'
 import ReactDOM from 'react-dom'
 import { useState, useEffect, useRef } from 'react'
 import * as esbuild from 'esbuild-wasm'
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin'
 import { fetchPlugin } from './plugins/fetch-plugin'
+import CodeEditor from './components/code-editor'
 
 const App = () => {
   const [input, setInput] = useState('')
@@ -50,7 +52,7 @@ const App = () => {
             } catch (err) {
               const root = document.querySelector('#root')
               root.innerHTML = '<div style="color: red;"><h4>Runtime Error:</h4>' + err + '</div>'
-              console.error(err) 
+              console.error(err)
             }
           }, false)
         </script>
@@ -60,6 +62,7 @@ const App = () => {
 
   return (
     <div>
+      <CodeEditor initialValue="const a = 1;" onChange={(value) => setInput(value)} />
       <textarea value={input} onChange={(e) => setInput(e.target.value)} />
       <div>
         <button onClick={onClick}>Submit</button>
