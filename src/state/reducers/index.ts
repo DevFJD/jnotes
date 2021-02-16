@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 import cellsReducer from './cellsReducer';
+import bundelsReducer from './bundlesReducer';
 
-const reducers = combineReducers({ cells: cellsReducer });
+const reducers = combineReducers({ cells: cellsReducer, bundles: bundelsReducer });
 
 export default reducers;
 
